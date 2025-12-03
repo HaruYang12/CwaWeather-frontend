@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>森森天氣</title>
+    <title>Haru天氣觀測站</title>
     <link rel="icon" type="image/png" href="./icon-v2.png">
     <link rel="apple-touch-icon" href="./icon-v2.png">
     <link rel="apple-touch-icon" sizes="180x180" href="./icon-v2.png">
@@ -15,14 +15,22 @@
 
     <style>
         :root {
-            --ac-green: #7DE1A9;
-            --ac-bg-pattern: #8FD8AF;
-            --ac-cream: #FFFEF2;
-            --ac-yellow: #F9F195;
-            --ac-brown: #796452;
-            --ac-blue: #4FB5D9;
-            --ac-dark: #58504A;
-            --ac-card-border: #E6E0C8;
+            --ac-green: #E4F7E1;
+            /* 草地綠（背景） */
+            --ac-bg-pattern: #D0EDCB;
+            /* 更亮的綠底紋 */
+            --ac-cream: #FFF8E8;
+            /* 柔和奶油色（卡片） */
+            --ac-yellow: #F6C94C;
+            /* 活潑黃（重點） */
+            --ac-brown: #5B3A1A;
+            /* 尼克的毛色咖啡深棕 */
+            --ac-blue: #8EC5FF;
+            /* 朱迪警察制服藍 */
+            --ac-dark: #2C1A0F;
+            /* 深色文字 */
+            --ac-card-border: #FFECC7;
+            /* 卡片邊框：柔黃 */
         }
 
         * {
@@ -72,7 +80,7 @@
 
         .update-pill {
             font-size: 0.8rem;
-            color: white;
+            color: rgb(1, 1, 1);
             background: rgba(0, 0, 0, 0.2);
             padding: 4px 10px;
             border-radius: 12px;
@@ -104,7 +112,7 @@
             left: 50%;
             transform: translateX(-50%);
             background: var(--ac-blue);
-            color: white;
+            color: black;
             padding: 5px 20px;
             border-radius: 20px;
             font-weight: bold;
@@ -187,7 +195,7 @@
         /* === 稍後預報：橫向滑動區 === */
         .section-title {
             font-size: 1.2rem;
-            color: white;
+            color: black;
             margin-bottom: 15px;
             margin-left: 10px;
             font-weight: 900;
@@ -221,7 +229,7 @@
 
         .mini-time {
             background: var(--ac-green);
-            color: white;
+            color: black;
             padding: 3px 10px;
             border-radius: 10px;
             font-size: 0.8rem;
@@ -260,11 +268,11 @@
 
 <body>
     <div id="loading" class="loading-screen">
-        <div style="font-size: 4rem; animation: bounce 2s infinite;">☁️</div>
-        <p style="color: white; font-weight: bold; margin-top: 20px;">正在觀測雲的流動...</p>
+        <div style="font-size: 4rem; animation: bounce 2s infinite;">☀️</div>
+        <p style="color: black; font-weight: bold; margin-top: 20px;">正在觀測雲的流動...</p>
     </div>
     <div class="status-bar">
-        <div class="location-pill">📍 高雄</div>
+        <div class="location-pill">📍 臺北</div>
         <div id="updateTime" class="update-pill">更新中...</div>
     </div>
 
@@ -280,7 +288,7 @@
     </div>
 
     <script>
-        const API_URL = "https://cwa-backend-api.zeabur.app/api/weather/kaohsiung";
+        const API_URL = "https://weather-taipei-city.zeabur.app/api/weather/kaohsiung";
 
         function getWeatherIcon(weather) {
             if (!weather) return "🌤️";
